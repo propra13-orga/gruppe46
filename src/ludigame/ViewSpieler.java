@@ -1,16 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/* 
+ * just another ViewPlayer.  For more info have
+ * a look at the ViewPlayer class.
+ * 
  */
+
 package ludigame;
-
-
-/**
- *
- * @author Gerhard
- */
-
-
 
 public class ViewSpieler extends ViewPlayer{
 	

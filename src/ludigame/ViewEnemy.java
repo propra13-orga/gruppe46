@@ -1,15 +1,9 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * The View of the enemy is just a View of a Player
+ * For more info have a look at the ViewPlayer class
  */
 package ludigame;
 
-/**
- *
- * @author Sergej
- */
-
-import javax.swing.*;
 public class ViewEnemy extends ViewPlayer{
 
 	public ViewEnemy(Player p, String ImagePath) {

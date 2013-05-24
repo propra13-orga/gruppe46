@@ -1,19 +1,17 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ *This is the main class for all blocks (we call them items) on the map
+ *Every block is an item and will be extended by this class.
  */
 package ludigame;
 import java.util.Observable;
-/**
- *
- * @author pixel
- */
+
 public class Item extends Observable {
 	
    private int posX;
    private int posY;
    private String type;
    
+   /* Every Item is initialized with a position and a type */ 
    public Item(int posX, int posY, String type)
    {
    this.posX=posX;
@@ -21,20 +19,22 @@ public class Item extends Observable {
    this.type= type;
    }
    
+   /* getters */
    public int getPosX() {
         return posX;
     }
-
+   
    public int getPosY() {
         return this.posY;
     }
-
-   public void setPosX(int x) {
+   
+   
+    /*setters*/
+    public void setPosX(int x) {
         this.posX = x;
-
     }
 
-   public void setPosY(int y) {
+    public void setPosY(int y) {
         this.posY = y;
     }
     
@@ -42,9 +42,7 @@ public class Item extends Observable {
     return this.type;
     }
     
-    public void setType(String type)
-    {
+    public void setType(String type){
     this.type=type;
-    
     }
 }

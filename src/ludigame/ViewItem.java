@@ -1,6 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ /*
+ *  This is the View of an Item
+ *  it is not a main class which will be extended
+ *  because every item has the same property in the view.
  */
 package ludigame;
 
@@ -10,10 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-/**
- *
- * @author pixel
- */
 public class ViewItem implements Drawable {
 
     private Item item;

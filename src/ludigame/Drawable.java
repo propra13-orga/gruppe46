@@ -1,7 +1,11 @@
+/*
+ * We use this interface for the View* classes.
+ * This is an abstract interface we need for the draw method.
+ */
 package ludigame;
 /**
 *
-* @author Gerhard
+
 */
 import java.awt.Graphics;
 

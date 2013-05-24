@@ -1,13 +1,11 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * The enemy is also just a player. Thats why we extend this 
+ * class with the Player class.
+ * 
  */
+
 package ludigame;
 
-/**
- *
- * @author Sergej
- */
 public class Enemy extends Player
 {
 

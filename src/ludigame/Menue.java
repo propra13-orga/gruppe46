@@ -1,6 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * The Menue is the first window you see and where you can decide where
+ * you go to. Ofcourse you can start a game from the menu.
  */
 package ludigame;
 
@@ -13,11 +13,9 @@ import java.util.Observer;
 
 import javax.swing.*;
 
-/**
- *
- * @author Sebastian
- */
+
 public class Menue extends JFrame implements ActionListener, Observer{
+	
 		private int height;
 		private int width;
 		private int percentH;

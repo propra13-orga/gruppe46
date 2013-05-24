@@ -1,9 +1,13 @@
+/*
+ * The Game class create all necessary objects for a new game.
+ * It decides whether a game is lost or not and tells this the Menue.
+ * 
+ */
 package ludigame;
 
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.JFrame;
 
 public class Game  extends Observable implements Observer {
 
@@ -11,8 +15,6 @@ public class Game  extends Observable implements Observer {
 	private ViewPlayingField vpf;
 	private Spieler sp;
 	private ViewSpieler vp;
-	private Enemy enemy;
-	private ViewEnemy venemy;
 	private Rules rules;
 	private ControllerSpieler cp;
 	private View view;
@@ -22,47 +24,59 @@ public class Game  extends Observable implements Observer {
 	public Game(int lvl)
 	{
 		win=true;
-	    // Initialize Spielfeld + its view
+	    /*  initialize the PlayingField and its View */
 	    pf=new PlayingField(lvl);
 	    vpf=new ViewPlayingField(pf);
 	    
- 	 // Initialize Spieler
-	    System.out.println(pf.getStartX());
-	    System.out.println(pf.getStartY());
+	    /* initialize the Player and its View */ 
     	sp = new Spieler(pf.getStartX()*60, pf.getStartY()*60);
 	    vp=new ViewSpieler(sp, "images/playerR.png");
-	 // Initialize Enemy   
+	 
+	    /* initialize the Enemy and its View */ 
+	     new Enemy(150,150);
+	     new ViewEnemy(sp, "images/enemy.png");
 	    
-	    enemy = new Enemy(150,150);
-	    venemy=new ViewEnemy(sp, "images/enemy.png");
+	    /* initialize the Rules which got:
+	     * PlayingField
+	     * ViewPlayingField
+	     * Spieler
+	     * ViewSpieler
+	     */
+	    rules = new Rules(sp, vp, pf, vpf);
 	    
-	
-	    // Initialize Rules
-	    rules = new Rules(sp,pf,vp, vpf);
-	    
-	    // Initialize Controller for Player 
+	    /* initialize  additional Controllers */ 
 	    cp=new ControllerSpieler (rules);
-	    
-	    
-	  
-	    // Create View & attach KeyListener to it
+
+	    /* Create the main View of the Game on wich we will draw everything */ 
         view= new View(pf.getHeight(),pf.getWidth(),vp,vpf);
-        view.addKeyListener(cp);
         
+        /* attach the controller of the Player to the view to make interaction possible */ 
+        view.addKeyListener(cp);
+        /* Spieler is observed by this class and by the view
+         * while this class decides wheter a game is won or not
+         * the view redraws the player 
+         */
         sp.addObserver(view);
         sp.addObserver(this);
+        
+        /* the playingfield is observerd by it's view*/
         pf.addObserver(vpf);     
 	}
 
-
+    /*This method returns wether the game is won or not */
 	public boolean win()
 	{
 		return win;
 	}
 	
+	
+	/* This method is called when the player's position or lifestatus is updated
+	 * it sets the win variable to true or false 
+	 * this is necessary to decide if the game is lost.
+	 */
+	
 	@Override
 	public void update(Observable o, Object arg) {
-		System.out.println("Ich war hier und Lifestatus ist:"+sp.getLifestatus());
 		if (pf.getWin()==true)
 		{
 			view.setVisible(false);

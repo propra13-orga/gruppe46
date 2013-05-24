@@ -1,3 +1,10 @@
+/* 
+ * View of the playing Field. 
+ * This class draws the content of the array of PlayingField
+ * and returns it in form of an array of ViewItems.
+ * 
+ */
+
 package ludigame;
 
 import java.awt.Graphics;
@@ -21,6 +28,8 @@ public class ViewPlayingField implements Drawable, Observer {
         floor=null;
     }
     
+    
+    /* This method loads the images of the items to the ViewItemArr (ay). */ 
     public void pfGUI()
     {
         int a=pf.getFieldarray().length;
@@ -45,12 +54,18 @@ public class ViewPlayingField implements Drawable, Observer {
    
     }
     
+    /* return the ViewItemArr(ay) */
     public ViewItem[] getViewItems()
     {
     	return viewItemArr;
     }
     
 
+    /* 
+     * possible due to our abstract interface drawable
+     * this method draws the playingfield to a graphic g.
+     * @see ludigame.Drawable#draw(java.awt.Graphics)
+     */
     @Override
     public void draw(Graphics g) {
     	  
@@ -72,6 +87,10 @@ public class ViewPlayingField implements Drawable, Observer {
           }
     }
 
+    /*
+     * if the model of PlayingField changes this method is called.
+     * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
+     */
 	@Override
 	public void update(Observable o, Object arg) {
 		pfGUI();

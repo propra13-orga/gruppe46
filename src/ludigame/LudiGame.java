@@ -1,23 +1,16 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Starting point of all action. The class which includes the main method.
+ * 
+ * The Game is developed in the MVC Pattern
+ * That means we strictly divided the classes by
+ *  VIEW - CONTROLLER - MODEL
  */
 package ludigame;
 
-/**
- *
- * @author Sergej
- */
 public class LudiGame {
 
     
     public static void main(String[] args) throws Exception {
-        // Controller controller = new Controller();
-    	Menue menue = new Menue("Ludi Game",600,600);
-    	//Game game= new Game();
-    	
-       //Game game = new Game(1);
-        // TODO code application logic here
-       
+    	 new Menue("Ludi Game",600,600);
     }
 }

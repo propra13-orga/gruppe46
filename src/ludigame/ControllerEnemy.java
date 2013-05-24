@@ -1,18 +1,16 @@
+/*
+ * This Class is not used yet. Therefore there is no documentation.
+ */
 package ludigame;
 
 public class ControllerEnemy{
 
-	private Rules rules;
 	
-	public ControllerEnemy(Rules rules) {
+	public ControllerEnemy() {
 	
-		this.rules=rules;
 		// TODO Auto-generated constructor stub
 	}
 	
-	private void ai()
-	{
 
-	}
 
 }

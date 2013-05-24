@@ -4,27 +4,17 @@
  */
 package ludigame;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-/**
- *
- * @author Gerhard
- */
 public class Rules {
 
     private Spieler sp;
-    private Enemy en;
     private PlayingField pf;
     private ViewPlayer vp;
     private ViewPlayingField vpf;
     private int speed = 5;
-    private boolean hindernis = false;
-    private int bonus;
     private int block = 60;
     private int spieler =40;
 
-    public Rules(Spieler sp, PlayingField pf, ViewPlayer vp, ViewPlayingField vpf) {
+    public Rules(Spieler sp, ViewPlayer vp, PlayingField pf, ViewPlayingField vpf) {
         this.pf = pf;
         this.sp = sp;
         this.vp = vp;
@@ -33,6 +23,7 @@ public class Rules {
         
 
     }
+
 
     private String getHorizType(int posX, int posY) {
 
