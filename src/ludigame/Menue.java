@@ -51,27 +51,32 @@ public Menue (String titel, int height, int width)
         setLayout(null);
         
         Starten = new JButton("Spiel starten");
-        Starten.setBounds(width/4-this.getInsets().left,(height/12)*2,width/75*percentW,height/120*percentH );
+        Starten.setBounds(width/4-this.getInsets().left,
+        		(height/12)*2,width/75*percentW,height/120*percentH );
         add (Starten);
         Starten.addActionListener(this);
         
         Einstellungen = new JButton("Einstellungen");
-        Einstellungen.setBounds(width/4-this.getInsets().left,(height/12)*4,width/75*percentW,height/120*percentH );
+        Einstellungen.setBounds(width/4-this.getInsets().left,
+        		(height/12)*4,width/75*percentW,height/120*percentH );
         add (Einstellungen);
         Einstellungen.addActionListener(this);
         
         Credits = new JButton("Credits");
-        Credits.setBounds(width/4-this.getInsets().left,(height/12)*6,width/75*percentW,height/120*percentH );
+        Credits.setBounds(width/4-this.getInsets().left,
+        		(height/12)*6,width/75*percentW,height/120*percentH );
         add (Credits);
         Credits.addActionListener(this);            
         
         Ende = new JButton("Ende");
-        Ende.setBounds(width/4-this.getInsets().left,(height/12)*8,width/75*percentW,height/120*percentH );
+        Ende.setBounds(width/4-this.getInsets().left,
+        		(height/12)*8,width/75*percentW,height/120*percentH );
         add (Ende);
         Ende.addActionListener(this);
         
         back = new JButton ("Zurück zum Hauptmenü");
-        back.setBounds(width/4-this.getInsets().left,(height/12)*8,width/75*percentW,height/120*percentH );
+        back.setBounds(width/4-this.getInsets().left,
+        		(height/12)*8,width/75*percentW,height/120*percentH );
         back.addActionListener(this);
 
 }
@@ -96,7 +101,8 @@ public void actionPerformed(ActionEvent e)
         if (lvl0.exists())
         { 
         Level1 = new JButton ("Level 1");   
-        Level1.setBounds(width/4-this.getInsets().left,(height/12)*2,width/75*percentW,height/120*percentH );
+        Level1.setBounds(width/4-this.getInsets().left,
+        		(height/12)*2,width/75*percentW,height/120*percentH );
         Levelfenster.add(Level1);
         Level1.addActionListener(this);
         }
@@ -106,7 +112,8 @@ public void actionPerformed(ActionEvent e)
         if (lvl1.exists())
         {
         Level2 = new JButton ("Level 2");
-        Level2.setBounds(width/4-this.getInsets().left,(height/12)*4,width/75*percentW,height/120*percentH );
+        Level2.setBounds(width/4-this.getInsets().left,
+        		(height/12)*4,width/75*percentW,height/120*percentH );
         Levelfenster.add(Level2);
         Level2.addActionListener(this);   
         }
@@ -116,7 +123,8 @@ public void actionPerformed(ActionEvent e)
         if (lvl2.exists())
         {
         Level3 = new JButton ("Level 3");
-        Level3.setBounds(width/4-this.getInsets().left,(height/12)*6,width/75*percentW,height/120*percentH );
+        Level3.setBounds(width/4-this.getInsets().left,
+        		(height/12)*6,width/75*percentW,height/120*percentH );
         Levelfenster.add(Level3);
         Level3.addActionListener(this);
         }
@@ -141,7 +149,8 @@ public void actionPerformed(ActionEvent e)
         Einstellungsfenster.setLayout(null);
         
         na = new JButton ("Zurzeit nicht verfügbar");
-        na.setBounds(width/4-this.getInsets().left,(height/12)*4,width/75*percentW,height/120*percentH );
+        na.setBounds(width/4-this.getInsets().left,
+        		(height/12)*4,width/75*percentW,height/120*percentH );
         Einstellungsfenster.add(na);
         na.addActionListener(this);
         
@@ -234,13 +243,17 @@ public void update(Observable arg0, Object arg1) {
 	{
 		this.setVisible(true);
 		ImageIcon icon = new ImageIcon("./images/playerDead.png");
-        JOptionPane.showMessageDialog(null, "Du bist zu Staub zerfallen!", "Verloren", JOptionPane.INFORMATION_MESSAGE, icon);
+        JOptionPane.showMessageDialog(null, "Du bist zu Staub zerfallen!", 
+        		"Verloren", 
+        		JOptionPane.INFORMATION_MESSAGE, icon);
 	}
 	if (game.win()==true)
 	{
 		this.setVisible(true);
 		ImageIcon icon2 = new ImageIcon("./images/playerHappy.png");
-        JOptionPane.showMessageDialog(null, "Herzlichen Glückwunsch. Die Prinzessin kommt später.", "Gewonnen", JOptionPane.INFORMATION_MESSAGE, icon2);
+        JOptionPane.showMessageDialog(null, "Herzlichen Glückwunsch. Die Prinzessin kommt später.",
+        		"Gewonnen", 
+        		JOptionPane.INFORMATION_MESSAGE, icon2);
 	}
 }
 

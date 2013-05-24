@@ -42,7 +42,8 @@ public class View extends JFrame implements Observer {
 	}
         public void Fenster()
         {            
-               this.setSize(this.width+this.getInsets().left, this.height+this.getInsets().top);
+               this.setSize(this.width+this.getInsets().left, 
+            		   this.height+this.getInsets().top);
                this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                this.setVisible(true);
                this.setLocationRelativeTo (null);
@@ -51,14 +52,16 @@ public class View extends JFrame implements Observer {
     	
         public Image draw()
         {  
-        	   BufferedImage bimg=new BufferedImage(this.height, this.width,BufferedImage.TYPE_INT_RGB);
+        	   BufferedImage bimg=new BufferedImage(this.height, 
+        			   this.width,BufferedImage.TYPE_INT_RGB);
         	   vpf.draw(bimg.getGraphics());
         	   vp.draw(bimg.getGraphics());
         	   return bimg;
         }
     
        public void paint(Graphics g) {
-    	   	g.drawImage(draw(),this.getInsets().left,this.getInsets().top,null);
+    	   	g.drawImage(draw(),this.getInsets().left,
+    	   			this.getInsets().top,null);
     	
          }
 		@Override

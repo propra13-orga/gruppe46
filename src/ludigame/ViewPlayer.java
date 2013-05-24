@@ -26,7 +26,8 @@ public class ViewPlayer implements Drawable{
      	try {
 			this.PlayerImg=ImageIO.read(new File(ImagePath));
 		} catch (IOException e) {
-				System.out.println("Error in some kind of ViewPlayer (check also extended Classes), prolly probs with the Playerimage: "+e.getMessage());
+				System.out.println("Error in some kind of ViewPlayer (check also extended Classes), " +
+						"prolly probs with the Playerimage: "+e.getMessage());
 		}
     }
      @Override

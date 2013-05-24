@@ -34,7 +34,8 @@ public class ViewItem implements Drawable {
         try {
             this.itemImg = ImageIO.read(new File(imagePath));
         } catch (IOException e) {
-            System.out.println("Error in some sort of an Item View: Item Image could not be loaded!"+e.getMessage());
+            System.out.println("Error in some sort of an Item View: " +
+            		"Item Image could not be loaded!"+e.getMessage());
         }
 
 

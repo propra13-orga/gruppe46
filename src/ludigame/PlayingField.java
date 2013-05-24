@@ -62,7 +62,8 @@ public class PlayingField extends Observable {
         fieldarray = new Item[nodeZahl];
         for (int i = 0; i < nodeZahl; i++) {
             node = (Element) itemListe.item(i);
-            fieldarray[i]= new Item(Integer.parseInt(node.getAttribute("X"))*60, Integer.parseInt(node.getAttribute("Y"))*60, node.getAttribute("Type"));
+            fieldarray[i]= new Item(Integer.parseInt(node.getAttribute("X"))*60, 
+            		Integer.parseInt(node.getAttribute("Y"))*60, node.getAttribute("Type"));
         }
     }
 

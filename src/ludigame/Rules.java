@@ -38,7 +38,9 @@ public class Rules {
 
         String item = "";
         for (int i = 0; i < pf.getFieldarray().length; i++) {
-            if ((pf.getFieldarray()[i].getPosX() == posX) && (pf.getFieldarray()[i].getPosY() < posY + 40) && (posY < pf.getFieldarray()[i].getPosY() + 40)) {
+            if ((pf.getFieldarray()[i].getPosX() == posX) 
+            		&& (pf.getFieldarray()[i].getPosY() < posY + 40) 
+            		&& (posY < pf.getFieldarray()[i].getPosY() + 40)) {
                 item = pf.getFieldarray()[i].getType();
                  if(item.equals("bonus")){
                      
@@ -56,7 +58,9 @@ public class Rules {
     private String getVertItemType(int posX, int posY) {
         String item = "";
         for (int i = 0; i < pf.getFieldarray().length; i++) {
-            if ((pf.getFieldarray()[i].getPosX() + spieler > posX) && (pf.getFieldarray()[i].getPosX() < posX + spieler) && (posY == pf.getFieldarray()[i].getPosY())) {
+            if ((pf.getFieldarray()[i].getPosX() + spieler > posX) 
+            		&& (pf.getFieldarray()[i].getPosX() < posX + spieler) 
+            		&& (posY == pf.getFieldarray()[i].getPosY())) {
         
                 item = pf.getFieldarray()[i].getType();
                 if(item.equals("bonus")){
