@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!-- XML Level Datei Version Alpha 210413  @author Gerhard Klassen -->
+<!-- NOTE: Not mentioned fields will be handled as normal ground! 
+     not mentioning one layers details will result in an error -->
+<level>
+  <author>Gerhard Klassen</author>
+  <lvlname>Test-Level</lvlname>
+  <layer-count>1</layer-count>
+	<layer id="1">
+			<rows>5</rows>
+			<columns>5</columns>
+			<nrCustomBlocks>13</nrCustomBlocks> 
+			<Block>
+				<X>0</X>
+				<Y>0</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+			<Block>
+				<X>3</X>
+				<Y>3</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+			<Block>
+				<X>2</X>
+				<Y>0</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+			<Block>
+				<X>3</X>
+				<Y>0</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+			<Block>
+				<X>4</X>
+				<Y>0</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+			<Block>
+				<X>0</X>
+				<Y>1</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+			<Block>
+				<X>0</X>
+				<Y>2</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+			<Block>
+				<X>0</X>
+				<Y>4</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+			<Block>
+				<X>1</X>
+				<Y>4</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+		    <Block>
+				<X>2</X>
+				<Y>4</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+			<Block>
+				<X>3</X>
+				<Y>4</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+			<Block>
+				<X>4</X>
+				<Y>4</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+			<Block>
+				<X>4</X>
+				<Y>3</Y>
+				<TYPE>wall</TYPE>
+			</Block>
+		
+	</layer>
+</level>
