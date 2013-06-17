@@ -7,10 +7,14 @@
  */
 package ludigame;
 
+import controller.ControllerSpieler;
+import views.MainWindow;
+
 public class LudiGame {
 
-    
-    public static void main(String[] args) throws Exception {
-    	 new Menue("Ludi Game",600,600);
-    }
+	public static void main(String[] args) throws Exception {
+
+		MainWindow main = new MainWindow();
+
+	}
 }

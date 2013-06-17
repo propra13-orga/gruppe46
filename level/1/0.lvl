@@ -7,52 +7,47 @@
   <lvlname>close your eyes</lvlname>
   
   <Layer>
-	<layerdetail Height="635" Width="615" StartX="0" StartY="3"/>
+	<layerdetail Height="600" Width="600" StartX="0" StartY="2"/>
 			
+			<Block Type="shop" X="0" Y="0"/>
 		
-			<Block Type="finish" X="9" Y="9"/>
-
-			<Block Type="enemy" X="0" Y="0"/>
-			<Block Type="enemy" X="5" Y="4"/>
-			<Block Type="enemy" X="6" Y="1"/>
-			<Block Type="enemy" X="7" Y="4"/>
-
-			<Block Type="bonus" X="0" Y="9"/>
-			<Block Type="bonus" X="5" Y="0"/>
-     
+			<Block Type="finish" X="9" Y="9" Tlayer="1" Tlvl="1"/>
+		
+			<Block Type="trap" X="5" Y="4"/>
+			<Block Type="trap" X="6" Y="1"/>
+			<Block Type="trap" X="7" Y="4"/>
+			<Block Type="shoes" X="5" Y="0"/>
+			<Block Type="enemy" X="3" Y="0"/>
+			<Block Type="enemy" X="9" Y="0"/>
+			<Block Type="enemy" X="9" Y="9"/>
+			<Block Type="enemy" X="0" Y="5"/>
+			<Block Type="npc" X="1" Y="3"/>
+			<Block Type="enemy" X="0" Y="9"/>
+			<Block Type="enemy" X="6" Y="3"/>
+			<Block Type="healthpack" X="7" Y="2"/>
 			<Block Type="wall" X="0" Y="4"/>
 			<Block Type="wall" X="0" Y="8"/>
-
 			<Block Type="wall" X="1" Y="4"/>
 			<Block Type="wall" X="1" Y="6"/>
 			<Block Type="wall" X="1" Y="8"/>
-
-			<Block Type="wall" X="2" Y="1"/>
 			<Block Type="wall" X="2" Y="2"/>
 			<Block Type="wall" X="2" Y="3"/>
 			<Block Type="wall" X="2" Y="6"/>
-
 			<Block Type="wall" X="3" Y="5"/>
 			<Block Type="wall" X="3" Y="6"/>
 			<Block Type="wall" X="3" Y="7"/>
 			<Block Type="wall" X="3" Y="8"/>
-
 			<Block Type="wall" X="4" Y="0"/>
-			<Block Type="wall" X="4" Y="1"/>
 			<Block Type="wall" X="4" Y="2"/>
 			<Block Type="wall" X="4" Y="3"/>
 			<Block Type="wall" X="4" Y="4"/>
-
 			<Block Type="wall" X="5" Y="6"/>
 			<Block Type="wall" X="5" Y="7"/>
 			<Block Type="wall" X="5" Y="8"/>
 			<Block Type="wall" X="5" Y="9"/>
-
 			<Block Type="wall" X="6" Y="6"/>
-
 			<Block Type="wall" X="7" Y="6"/>
 			<Block Type="wall" X="7" Y="8"/>
-
 			<Block Type="wall" X="8" Y="1"/>
 			<Block Type="wall" X="8" Y="2"/>
 			<Block Type="wall" X="8" Y="3"/>
@@ -60,8 +55,14 @@
 			<Block Type="wall" X="8" Y="5"/>
 			<Block Type="wall" X="8" Y="6"/>
 			<Block Type="wall" X="8" Y="8"/>
-
 			<Block Type="wall" X="9" Y="8"/>
+						
+			
+			
+			
+			
+			
+			
 			
 
 			

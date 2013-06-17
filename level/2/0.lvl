@@ -7,16 +7,20 @@
   <lvlname>close your eyes</lvlname>
   
   <Layer>
-	<layerdetail Height="640" Width="620" StartX="5" StartY="4"/>
+	<layerdetail Height="600" Width="600" StartX="5" StartY="4"/>
 			
-			<Block Type="finish" X="5" Y="2"/>
+			<Block Type="finish" X="5" Y="2" Tlayer="1" Tlvl="2"/>
 			
 			<Block Type="enemy" X="2" Y="8"/>
-			<Block Type="enemy" X="4" Y="7"/>
+			<Block Type="enemy" X="3" Y="2"/>
 			<Block Type="enemy" X="7" Y="3"/>
 			<Block Type="enemy" X="9" Y="2"/>
-
-			<Block Type="bonus" X="9" Y="0"/>
+			<Block Type="trap" X="2" Y="6"/>
+			<Block Type="trap" X="3" Y="8"/>
+			<Block Type="trap" X="9" Y="2"/>
+			<Block Type="trap" X="7" Y="3"/>
+			<Block Type="shoes" X="4" Y="2"/>
+			<Block Type="healthpack" X="9" Y="0"/>
 			
 			<Block Type="wall" X="0" Y="3"/>
 

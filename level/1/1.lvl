@@ -7,19 +7,16 @@
   <lvlname>close your eyes</lvlname>
   
   <Layer>
-	<layerdetail Height="640" Width="620" StartX="9" StartY="9"/>
+	<layerdetail Height="600" Width="600" StartX="0" StartY="9"/>
 			
-			<Block Type="finish" X="5" Y="2"/>
+			<Block Type="finish" X="3" Y="2" Tlayer="2" Tlvl="1"/>
+		
+			<Block Type="shoes" X="5" Y="0"/>
+			<Block Type="trap" X="2" Y="8"/>
+			<Block Type="trap" X="4" Y="7"/>
+			<Block Type="trap" X="7" Y="3"/>
+			<Block Type="trap" X="9" Y="2"/>
 			
-			<Block Type="enemy" X="2" Y="8"/>
-			<Block Type="enemy" X="4" Y="7"/>
-			<Block Type="enemy" X="7" Y="3"/>
-			<Block Type="enemy" X="9" Y="2"/>
-
-			<Block Type="bonus" X="9" Y="0"/>
-			<Block Type="bonus" X="7" Y="6"/>
-			
-			<Block Type="wall" X="0" Y="3"/>
 
 			<Block Type="wall" X="1" Y="1"/>
 			<Block Type="wall" X="1" Y="3"/>
@@ -27,7 +24,8 @@
 			<Block Type="wall" X="1" Y="6"/>
 			<Block Type="wall" X="1" Y="7"/>
 			<Block Type="wall" X="1" Y="8"/>
-
+			
+			
 			<Block Type="wall" X="2" Y="1"/>
 			<Block Type="wall" X="2" Y="3"/>
 			<Block Type="wall" X="2" Y="5"/>
@@ -64,10 +62,13 @@
 
 			<Block Type="wall" X="9" Y="1"/>
 			<Block Type="wall" X="9" Y="6"/>
-			
-
-
-		
+			<Block Type="trap" X="0" Y="3"/>
+			<Block Type="healthpack" X="9" Y="9"/>
+			<Block Type="shoes" X="7" Y="6"/>
+			<Block Type="enemy" X="0" Y="0"/>
+			<Block Type="enemy" X="9" Y="0"/>
+			<Block Type="enemy" X="7" Y="9"/>
+			<Block Type="enemy" X="9" Y="3"/>
 				
 		
    </Layer>
