@@ -235,13 +235,26 @@ public class Player extends Observable  {
 
 	public void takedamage(int dmg) {
 		
-		if ((healthpoints - dmg) > 0)
-			this.healthpoints = healthpoints - dmg;
-		else
+		if(armor>dmg)
 		{
-			killplayer();
-			playDeadsound();
+			armor=armor-dmg;
 		}
+		else 
+		{
+			dmg= dmg-armor;
+			if ((healthpoints - dmg) > 0)
+				this.healthpoints
+				
+				= healthpoints - dmg;
+			else
+			{
+				killplayer();
+				playDeadsound();
+			}
+			
+		}
+		
+		
 		
 	}
 
