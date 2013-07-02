@@ -1,0 +1,5 @@
+Gerhard Klassen und Sergej Korlakov:
+View, ViewEnemy, ViewItem, ViewPlayingField, ViewPlayer, Drawable, ControllerSpieler, ControllerEnemy, Game, View Spieler, PlayingField, Rules, Enemy, Item, Player, Spieler
+
+Sebastian Nippes und Christoph Ludwig:
+Menü, Design
