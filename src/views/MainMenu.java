@@ -12,6 +12,7 @@ public class MainMenu extends JPanel {
 	private JButton Credits;
 	private JButton Ende;
 	private JButton back;
+	private JButton Multiplayer;
 	private int height;
 	private int width;
 	private int percentH = 10;
@@ -24,9 +25,16 @@ public class MainMenu extends JPanel {
 		setLayout(null);
 		setVisible(true);
 		this.al = al;
+		
+		Multiplayer =new JButton("Multiplayer");
+		Multiplayer.setBounds(width / 4 - this.getInsets().left, (height / 12) *7,
+				width / 75 * percentW, height / 120 * percentH);
+		add(Multiplayer);
+		Multiplayer.setActionCommand("MULTIPLAYER");
+		Multiplayer.addActionListener(al);
 
 		Starten = new JButton("Spiel starten");
-		Starten.setBounds(width / 4 - this.getInsets().left, (height / 12) * 2,
+		Starten.setBounds(width / 4 - this.getInsets().left, (height / 12) * 1,
 				width / 75 * percentW, height / 120 * percentH);
 		add(Starten);
 		Starten.setActionCommand("LVLCHOOSER");
@@ -34,21 +42,21 @@ public class MainMenu extends JPanel {
 
 		lvlEditor = new JButton("Level Editor");
 		lvlEditor.setBounds(width / 4 - this.getInsets().left,
-				(height / 12) * 4, width / 75 * percentW, height / 120
+				(height / 12) * 3, width / 75 * percentW, height / 120
 						* percentH);
 		add(lvlEditor);
 		lvlEditor.setActionCommand("LVLEDITOR");
 		lvlEditor.addActionListener(al);
 
 		Credits = new JButton("Credits");
-		Credits.setBounds(width / 4 - this.getInsets().left, (height / 12) * 6,
+		Credits.setBounds(width / 4 - this.getInsets().left, (height / 12) * 5,
 				width / 75 * percentW, height / 120 * percentH);
 		add(Credits);
 		Credits.setActionCommand("CREDITS");
 		Credits.addActionListener(al);
 
 		Ende = new JButton("Ende");
-		Ende.setBounds(width / 4 - this.getInsets().left, (height / 12) * 8,
+		Ende.setBounds(width / 4 - this.getInsets().left, (height / 12) * 9,
 				width / 75 * percentW, height / 120 * percentH);
 		add(Ende);
 		Ende.setActionCommand("QUIT");

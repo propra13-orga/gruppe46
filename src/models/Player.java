@@ -198,7 +198,7 @@ public class Player extends Observable  {
 		return this.typedSkill;
 	}
 
-	public void updateAttributesAndItems() {
+	 public void updateAttributesAndItems() {
 		for (int j = 0; j < pf.getItemList().size(); j++) {
 			if (this.posX< pf.getItemList().get(j).getPosX() 
 					&& this.posX+30>=pf.getItemList().get(j).getPosX()

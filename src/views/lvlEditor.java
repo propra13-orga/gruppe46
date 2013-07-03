@@ -22,8 +22,15 @@ import javax.swing.border.LineBorder;
 
 
 import models.Block;
+import models.Enemy;
 import models.Floor;
+import models.Item;
+import models.KEnemy;
+import models.Key;
+import models.Player;
 import models.PlayingField;
+import models.Shoes;
+import models.Shop;
 import models.Trap;
 import models.Wall;
 
@@ -37,6 +44,7 @@ import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.swing.JTextField;
 import java.awt.Choice;
@@ -59,10 +67,16 @@ public class lvlEditor extends JPanel implements MouseListener {
 	private JLabel lblLoad;
 	private final Choice choiceLayer = new Choice();
 	private final Choice choiceLevel = new Choice();
+	private int startX,startY;
+	private boolean startset=false;
+	private ArrayList<Item> itemList=new ArrayList();
+	private ArrayList<Player> enemyList = new ArrayList();
+
 	/**
 	 * Create the panel.
 	 */
 	public lvlEditor( ActionListener al) {
+		startset=false;
 		setLayout(null);
 		mappanel = new JPanel();
 		mappanel.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -123,26 +137,64 @@ public class lvlEditor extends JPanel implements MouseListener {
 		tools.add(holeBtn);
 		
 		JButton button = new JButton("");
+		button.setIcon(new ImageIcon(lvlEditor.class.getResource("/view/images/start.png")));
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				current="start";
+				 
+			}
+		});
 		button.setBounds(6, 152, 60, 60);
 		tools.add(button);
 		
 		JButton button_1 = new JButton("");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				current="key";
+				
+			}
+		});
+		button_1.setIcon(new ImageIcon(lvlEditor.class.getResource("/view/images/finish.png")));
 		button_1.setBounds(90, 152, 60, 60);
 		tools.add(button_1);
 		
 		JButton button_2 = new JButton("");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				current="shop";
+			}
+		});
+		button_2.setIcon(new ImageIcon(lvlEditor.class.getResource("/view/images/shop.png")));
 		button_2.setBounds(6, 223, 60, 60);
 		tools.add(button_2);
 		
 		JButton button_3 = new JButton("");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				current="shoes";
+			}
+		});
+		button_3.setIcon(new ImageIcon(lvlEditor.class.getResource("/view/images/bonus.png")));
 		button_3.setBounds(90, 223, 60, 60);
 		tools.add(button_3);
 		
 		JButton button_4 = new JButton("");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				current="enemy";
+			}
+		});
+		button_4.setIcon(new ImageIcon(lvlEditor.class.getResource("/view/images/Ludi2.png")));
 		button_4.setBounds(6, 313, 60, 60);
 		tools.add(button_4);
 		
 		JButton button_5 = new JButton("");
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				current="boss";
+			}
+		});
+		button_5.setIcon(new ImageIcon(lvlEditor.class.getResource("/view/images/enemyV2.png")));
 		button_5.setBounds(90, 313, 60, 60);
 		tools.add(button_5);
 		
@@ -226,10 +278,14 @@ public class lvlEditor extends JPanel implements MouseListener {
 		JButton btnNewButton = new JButton("LOAD");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				enemyList.clear();
+				itemList.clear();
+				startset=false;
 				PlayingField pf = new PlayingField(1,null);
 				pf.LoadLayer(Integer.valueOf(choiceLayer.getSelectedItem().replaceFirst("[.][^.]+$", "")),Integer.valueOf(choiceLevel.getSelectedItem()));
-			
 				Fieldarray=pf.getFieldarray();
+				enemyList=pf.getEnemies();
+				itemList=pf.getItemList();
 				ViewPlayingField vpf=new ViewPlayingField(pf);
 				BufferedImage bimg = new BufferedImage(mappanel.getHeight(), mappanel.getWidth(),
 						BufferedImage.TYPE_INT_RGB);
@@ -264,7 +320,7 @@ public class lvlEditor extends JPanel implements MouseListener {
 					out.println("<author>Gerhard Klassen</author>");
 					out.println("<lvlname>close your eyes</lvlname>");
 					out.println("<Layer>");
-					out.println("<layerdetail Height=\"600\" Width=\"600\" StartX=\"0\" StartY=\"9\"/>");
+					out.println("<layerdetail Height=\"600\" Width=\"600\" StartX=\""+startX+"\" StartY=\""+startY+"\"/>");
 					
 					for (int i =0; i<Fieldarray.length; i++)
 					{
@@ -279,13 +335,45 @@ public class lvlEditor extends JPanel implements MouseListener {
 							case "models.Trap":
 								out.println("<Block Type=\"trap\" X=\""+i+"\" Y=\""+j+"\"/>");
 								break;
+							case "models.Shop":
+								out.println("<Block Type=\"shop\" X=\""+i+"\" Y=\""+j+"\"/>");
+								break;
 							default:
 								out.println("<Block Type=\"floor\" X=\""+i+"\" Y=\""+j+"\"/>");
 								break;	
 							}
 						}
 						
+						
 					}  
+					for (int k=0; k<itemList.size(); k++)
+					{
+						switch (itemList.get(k).getClass().getName())
+						{
+						case "models.Key":
+							out.println("<Block Type=\"finish\" X=\""+(itemList.get(k).getPosX()/60)+"\" Y=\""+(itemList.get(k).getPosY()/60)+"\" Tlayer=\""+2+"\" Tlvl=\""+1+"\"/>");
+							break;
+						case "models.Shoes":
+							out.println("<Block Type=\"shoes\" X=\""+(itemList.get(k).getPosX()/60)+"\" Y=\""+(itemList.get(k).getPosY()/60)+"\"/>");
+							break;
+						
+						}
+		
+					}
+					
+					for (int h=0; h<enemyList.size(); h++)
+					{
+						switch (enemyList.get(h).getClass().getName())
+						{
+						case "models.KEnemy":
+							out.println("<Block Type=\"enemy\" X=\""+(enemyList.get(h).getPosX()/60)+"\" Y=\""+(enemyList.get(h).getPosY()/60)+"\"/>");
+							break;
+						case "models.Shoes":
+							out.println("<Block Type=\"boss\" X=\""+(enemyList.get(h).getPosX()/60)+"\" Y=\""+(enemyList.get(h).getPosY()/60)+"\"/>");
+							break;
+						}
+					}
+						
 					out.println("</Layer>");
 					out.println("</level>");
 				out.close();
@@ -298,7 +386,7 @@ public class lvlEditor extends JPanel implements MouseListener {
 			}
 			
 		});
-		btnNewButton_1.setBounds(628, 11, 89, 23);
+		btnNewButton_1.setBounds(689, 19, 89, 23);
 		add(btnNewButton_1);
 		
 		JButton btnBackToMain = new JButton("back to main");
@@ -338,8 +426,43 @@ public class lvlEditor extends JPanel implements MouseListener {
 				currentImage = ImageIO.read(new File("images/boden.png"));
 				break;
 			case "wall":
-			currentImage = ImageIO.read(new File("images/Wand1.png"));
-			break;
+				currentImage = ImageIO.read(new File("images/Wand1.png"));
+				break;
+			case "start":
+				if (!startset)
+				{
+				currentImage = ImageIO.read(new File("images/start.png"));
+				startX=x/60;
+				startY=y/60;
+				}
+				break;
+			case "shoes":
+				currentImage = ImageIO.read(new File("images/bonus.png"));
+				Shoes shoes=new Shoes(null);
+				itemList.add(shoes);
+				shoes.setPos(x, y);
+				break;
+			case "key":
+				currentImage = ImageIO.read(new File("images/finish.png"));
+				Key key = new Key(null);
+				itemList.add(key);
+				key.setPos(x, y);
+				break;
+			case "enemy":
+				currentImage = ImageIO.read(new File("images/Ludi2.png"));
+				KEnemy ken = new KEnemy(null,null);
+				enemyList.add(ken);
+			    ken.setPos(x, y);
+				break;
+			case "boss":
+				currentImage = ImageIO.read(new File("images/EnemyV.png"));
+				Enemy boss = new Enemy(null,null);
+				enemyList.add(boss);
+			    boss.setPos(x, y);
+				break;
+			case "shop":
+				currentImage = ImageIO.read(new File("images/shop.png"));
+				break;
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -368,10 +491,14 @@ public class lvlEditor extends JPanel implements MouseListener {
 			case "floor":
 				Fieldarray[posX/60][posY/60]=new Floor(posX/60, posY/60);
 				break;
+			case "start":
+				startset=true;
+				break;
+			case "shop":
+				Fieldarray[posX/60][posY/60]=new Shop(posX/60, posY/60);
+				break;	
 			}
-			
 		}
-	  
 	}
 	@Override
 	public void mouseEntered(MouseEvent arg0) {

@@ -3,7 +3,7 @@
  * It decides whether a game is lost or not and tells this the Menue.
  * 
  */
-package ludigame;
+package Network;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -18,14 +18,13 @@ import views.ViewGame;
 import views.ViewKEnemy;
 import views.ViewMoveableObjects;
 import views.ViewPath;
-import views.ViewPlayer;
 import views.ViewPlayingField;
 import views.ViewSpieler;
 import views.ViewStatusBar;
 import models.*;
 import controller.EnemyManager;
 
-public class Game extends Observable implements Observer {
+public class NetworkGame extends Observable implements Observer {
 
 	private PlayingField pf;
 	private ViewPlayingField vpf;
@@ -38,25 +37,21 @@ public class Game extends Observable implements Observer {
 	private ViewGame vgame;
 	private boolean win, openshop;
 	private EnemyManager enMan;
-	private ViewMoveableObjects vMoveObj;
-	private MoveableObjects movObj;
-	private ViewStatusBar vsb;
-	
 	private ArrayList<RangeSkills> rskills = new ArrayList<RangeSkills>();
 
-	public Game(int lvl, ViewGame vgame) {
+	public NetworkGame(int lvl, ViewGame vgame) {
 		this.vgame = vgame;
 		openshop = false;
 		win=false;
 
-		movObj = new MoveableObjects(vgame);
+		MoveableObjects movObj = new MoveableObjects(vgame);
 		pf = new PlayingField(lvl, movObj);
 		vpf = new ViewPlayingField(pf);
 
-		 vMoveObj = new ViewMoveableObjects(movObj);
+		ViewMoveableObjects vMoveObj = new ViewMoveableObjects(movObj);
 		sp = new Spieler(pf, movObj);
 		ViewSpieler vsp = new ViewSpieler(sp, "images/playerV.png");
-		 vsb=new ViewStatusBar(sp,600);
+		ViewStatusBar vsb=new ViewStatusBar(sp,600);
 
 		cp = new ControllerSpieler(sp);
 
@@ -81,12 +76,6 @@ public class Game extends Observable implements Observer {
 	public boolean win() {
 		return win;
 	}
-	
-	public void setvEn(Enemy en)
-	{
-		ViewEnemy ven=new ViewEnemy(en, "images/enemyV2.png");
-		vgame.addEnemy(ven);
-	}
 
 	public void setWin(boolean win) {
 		this.win = win;
@@ -99,28 +88,6 @@ public class Game extends Observable implements Observer {
 	public boolean shop() {
 		return openshop;
 	}
-	public void resetSpieler(Spieler newSpieler)
-	{
-		this.sp=newSpieler;
-	}
-	public Player getPlayer()
-	{
-		return sp;
-	}
-	
-	public PlayingField getPlayingField()
-	{
-		return pf;
-	}
-	public MoveableObjects getMovableObjects()
-	{
-		return movObj;
-	}
-	public ViewMoveableObjects getViewMoveableObjects()
-	{
-		return vMoveObj;
-	}
-	
 
 	@Override
 	public void update(Observable o, Object arg) {

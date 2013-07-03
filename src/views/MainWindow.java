@@ -25,6 +25,7 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 	private ViewGame vgame = new ViewGame();
 	private LosePanel lostp = new LosePanel(600, 600, this);
 	private lvlEditor lvleditor=new lvlEditor(this);
+	private ViewMultiplayer multiplayer=new ViewMultiplayer(this,vgame);
 	//private lvlEditor lvlEditor = new lvlEditor(600, 600, this);
 	private Game game;
 
@@ -45,6 +46,7 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 		p1.setVisible(true);
 		p1.setBounds(0, 0, 600, 630);
 		p1.add(lvlchooser, "LVLCHOOSER");
+		p1.add(multiplayer, "MULTIPLAYER");
 		p1.add(lvleditor, "LVLEDITOR");
 		p1.add(mainPanel, "MAIN");
 		p1.add(vgame, "GAME");
@@ -91,11 +93,19 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 					+ this.getInsets().top);
 			game.addObserver(this);
 			break;
+		case "GAME":
+			cardLayout.show(p1, "GAME");
+			break;
 		case "SETTINGS":
 			cardLayout.show(p1, "SETTINGS");
 			break;
 		case "CREDITS":
 			cardLayout.show(p1, "SETTINGS");
+			break;
+		case "MULTIPLAYER":
+			cardLayout.show(p1, "MULTIPLAYER");
+			p1.setSize(600,600);
+			this.setSize(600,600);
 			break;
 		case "BACK":
 			cardLayout.show(p1, "MAIN");

@@ -42,6 +42,11 @@ public class ViewGame extends JPanel implements Observer {
 		window();
 		this.vsp = vsp;
 	}
+	
+	public void addEnemy(ViewEnemy ven)
+	{
+		this.ven.add(ven);
+	}
 
 	/* the window is created here with its properties */
 	public void window() {
