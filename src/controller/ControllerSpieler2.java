@@ -46,61 +46,64 @@ public class ControllerSpieler2 implements  Runnable {
 	}
 
 	public void keyIsPressed(String key) {
-
-		running = true;
-		if (key.equals("p39"))
-			sX = 1;
-
-		if (key.equals("p37"))
-			sX = -1;
+      
+		String k= key;
+		if(k.equals("feuerball")==false && k.equals("eisball")==false && k.equals("laser")==false){
+		String xOry;
 		
-		if (key.equals("p38"))
-			sY = -1;
+		xOry=k.replaceFirst("[.][^.]+$", "");
 		
-		if (key.equals("p40"))
-			sY = 1;
-
-		if (key.equals("p32")) {
-			
-			if (en.getTyped() == false) {
-				Sound ball=new Sound();
-				ball.play("sounds/ball.wav");
-				en.setTypedforSkill(1);
-				en.shot();
-				en.setTyped(true);
-
-			}
-		}
+		String koord= k.replace(xOry+".","");
 		
-        if (key.equals("p87")) {
-			
-			if (en.getTyped() == false) {
-				Sound ball=new Sound();
-				ball.play("sounds/ball.wav");
-				en.setTypedforSkill(3);
-				en.shot();
-				en.setTyped(true);
-
-			}
-		}
-		if (key.equals("p81"))// 81=q
+		int pos= Integer.valueOf(koord);
+		
+		if(xOry.equals("x"))
 		{
-			en.setTypedforSkill(2);
-			en.shot();
+			if(pos<en.getPosX())
+			{
+				en.setDirection(1);
+			} else if(pos>en.getPosX())
+			{
+				en.setDirection(3);
+			}
+			en.setPos(pos, en.getPosY());
 		}
-		movethis(sX, sY);
+		if(xOry.equals("y"))
+		{
+			if(pos<en.getPosY())
+			{
+				en.setDirection(2);
+			} else if(pos>en.getPosY())
+			{
+				en.setDirection(0);
+			}
+			en.setPos(en.getPosX(),pos);
+		}
+	} else if(k.equals("feuerball")){
 		
-		if ((key.equals("r39")) || (key.equals("r37"))) {
-			sX = 0;
-			en.setSpeedX(0);
-		}
-		if ((key.equals("r38")) || (key.equals("r40"))) {
-			sY = 0;
-			en.setSpeedY(0);
-		}
-		if ((key.equals("r32")) || (key.equals("r87"))) {
-			//e.setTyped(false);
-		}
+		
+			
+			
+			en.setTypedforSkill(1);
+			en.shot();
+			
+			
+
+		
+		
+	} else if(k.equals("eisball"))
+	{
+		en.setTypedforSkill(3);
+		en.shot();
+	} else if(k.equals("laser"))
+	{
+		System.out.println("lasererzeugt");
+		en.setTypedforSkill(2);
+		en.shot();
+	}
+		
+		running = true;
+	
 	}
 
 
@@ -113,7 +116,7 @@ public class ControllerSpieler2 implements  Runnable {
 			//System.out.println("thread im ControllerSpieler2");
 			en.getDamage();
 			try {
-				Thread.sleep(en.getSpeed());
+				Thread.sleep(5);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

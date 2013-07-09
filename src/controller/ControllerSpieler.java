@@ -61,7 +61,8 @@ public class ControllerSpieler implements KeyListener, Runnable {
 		}
 		if (e.getKeyCode() == 32) {
 			
-			if (sp.getTyped() == false) {
+			if (sp.getTyped() == false && sp.getManaPoints()>=sp.getManaCost()) {
+				sp.setBallerzeugt(true);
 				Sound ball=new Sound();
 				ball.play("sounds/ball.wav");
 				sp.setTypedforSkill(1);
@@ -73,7 +74,8 @@ public class ControllerSpieler implements KeyListener, Runnable {
 		
         if (e.getKeyCode() == 87) {
 			
-			if (sp.getTyped() == false) {
+			if (sp.getTyped() == false && sp.getManaPoints()>=sp.getManaCost()) {
+				sp.setEisballerzeugt(true);
 				Sound ball=new Sound();
 				ball.play("sounds/ball.wav");
 				sp.setTypedforSkill(3);
@@ -85,9 +87,10 @@ public class ControllerSpieler implements KeyListener, Runnable {
 		if (e.getKeyCode() == 81)// 81=q
 		{
 			
-
+			sp.setLasererzeugt(true);
 			sp.setTypedforSkill(2);
 			sp.shot();
+			
 
 		}
 		movethis(sX, sY);
@@ -110,6 +113,8 @@ public class ControllerSpieler implements KeyListener, Runnable {
 		}
 		if (e.getKeyCode() == 32 || e.getKeyCode()==87) {
 			sp.setTyped(false);
+			sp.setBallerzeugt(false);
+			sp.setEisballerzeugt(false); 
 		}
 
 	}

@@ -22,31 +22,31 @@ public class ViewEnemy extends ViewPlayer {
 		if (this.getPlayer().getLifes() < 1) {
 			this.setImage("images/enemyDead.png");
 		} else {
-			if (this.getPlayer().getSpeedX() > 0 && this.getSkin() == 1) {
+			if (this.getPlayer().getDirection()==3 && this.getSkin() == 1) {
 				this.setImage("images/enemyR.png");
-			} else if (this.getPlayer().getSpeedX() > 0 && this.getSkin() == 2) {
+			} else if (this.getPlayer().getDirection()==3 && this.getSkin() == 2) {
 				this.setImage("images/enemymovrechts.png");
-			} else if (this.getPlayer().getSpeedX() < 0 && this.getSkin() == 1) {
+			} else if (this.getPlayer().getDirection() ==1 && this.getSkin() == 1) {
 
 				this.setImage("images/enemyL.png");
 
-			} else if (this.getPlayer().getSpeedX() < 0 && this.getSkin() == 2) {
+			} else if (this.getPlayer().getDirection()==1 && this.getSkin() == 2) {
 
 				this.setImage("images/enemymovlinks.png");
-			} else if (this.getPlayer().getSpeedY() < 0 && this.getSkin() == 1) {
+			} else if (this.getPlayer().getDirection() ==2  && this.getSkin() == 1) {
 				this.setImage("images/enemyB2.png");
-			} else if (this.getPlayer().getSpeedY() < 0 && this.getSkin() == 2) {
+			} else if (this.getPlayer().getDirection()==2 && this.getSkin() == 2) {
 				this.setImage("images/enemyB3.png");
 			} else if (this.getPlayer().getSpeedY() == 0
 					&& (this.getPlayer().getDirection() == 2)) {
 				this.setImage("images/enemyB.png");
 			}
 
-			else if (this.getPlayer().getSpeedY() > 0 && this.getSkin() == 1) {
+			else if (this.getPlayer().getDirection()==0 && this.getSkin() == 1) {
 
 				this.setImage("images/enemyV2.png");
 
-			} else if (this.getPlayer().getSpeedY() > 0 && this.getSkin() == 2) {
+			} else if (this.getPlayer().getDirection()==0 && this.getSkin() == 2) {
 
 				this.setImage("images/enemyV3.png");
 

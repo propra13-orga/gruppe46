@@ -38,6 +38,9 @@ public class Player extends Observable  {
 	private int itemcount = 0;
 	private int typedSkill;
 	private MagicBall ball;
+	private boolean ballerzeugt=false;
+	private boolean eisballerzeugt=false;
+	private boolean lasererzeugt=false;
 	private IceBall iceball;
 	private MoveableObjects movObj;
 	private int manaCost;
@@ -418,6 +421,7 @@ public class Player extends Observable  {
 		String blockType = block.getClass().getName();
 		switch (blockType) {
 		case "models.Trap":
+			
 			Sound no=new Sound();
 			no.play("sounds/no.wav");
 			this.setPos(pf.getStartX() * 60, pf.getStartY() * 60);
@@ -527,12 +531,12 @@ public class Player extends Observable  {
 	}
 
 	public void shot() {
-
+		
 		if (this.getTypedforSkill() == 1) {
 			if (this.getManaPoints() > this.getManaCost()) {
 				this.takeManaDmg();
 			
-
+				
 				ball = new MagicBall(this.getPosX(), this.getPosY(), this.pf,
 						this);
 				ball.setSkillTyp("feuer");
@@ -750,6 +754,30 @@ public class Player extends Observable  {
 
 	public void setIceArmor(int iceArmor) {
 		this.iceArmor = iceArmor;
+	}
+
+	public boolean isBallerzeugt() {
+		return ballerzeugt;
+	}
+
+	public void setBallerzeugt(boolean ballerzeugt) {
+		this.ballerzeugt = ballerzeugt;
+	}
+
+	public boolean isEisballerzeugt() {
+		return eisballerzeugt;
+	}
+
+	public void setEisballerzeugt(boolean eisballerzeugt) {
+		this.eisballerzeugt = eisballerzeugt;
+	}
+
+	public boolean isLasererzeugt() {
+		return lasererzeugt;
+	}
+
+	public void setLasererzeugt(boolean lasererzeugt) {
+		this.lasererzeugt = lasererzeugt;
 	}
 
 }
