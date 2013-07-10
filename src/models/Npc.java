@@ -32,12 +32,24 @@ public class Npc extends Item {
 			this.owner.setSpeedY(0);
 			this.owner.dropItem(this.owner.getItems().size()-1);
 			ImageIcon icon = new ImageIcon("images/npc.png");
+			if(this.owner.getqFeuerball()<20)
+			{
 			JOptionPane.showMessageDialog(null,
-				    "Ey digger, dein Auftrag: Jeder dieser Geister hat nen eigenen Thread der" +
-				    "erst gestoppt wird wenn der Geist tot ist... ruckelts? Du weisst also was zu tun ist... ",
+				    "Schiesse 20 Feuerbaelle ab und du wirst belohnt!"+"\n"+"Abgeschossene Feuerbaelle:"+this.owner.getqFeuerball() ,
 				    "THE NpcFuzzi",
 				    JOptionPane.INFORMATION_MESSAGE,
 				    icon);
+			}else if(this.owner.getqFeuerball()>=20)
+			{
+				
+					JOptionPane.showMessageDialog(null,
+						    "Glueckwunsch!"+"\n"+"Falls du nochmal etwas Geld verdienen willst, komme wieder :) ",
+						    "THE NpcFuzzi",
+						    JOptionPane.INFORMATION_MESSAGE,
+						    icon);
+				this.owner.setqFeuerball(0);
+				this.owner.setMoney(this.owner.getMoney()+10);
+			}
 	
 			
 		

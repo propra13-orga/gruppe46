@@ -20,6 +20,9 @@ public class Spieler extends Player {
 		this.setLifes(1);
 		this.setMoney(10);
 		this.setHealthpoints(100);
+		this.setSpeedX(0);
+		this.setSpeedY(0);
+		this.setScore(0);
 
 	}
 
