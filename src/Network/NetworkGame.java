@@ -50,7 +50,6 @@ public class NetworkGame extends Observable implements Observer {
 
 		ViewMoveableObjects vMoveObj = new ViewMoveableObjects(movObj);
 		sp = new Spieler(pf, movObj);
-		sp.setLifes(0);
 		ViewSpieler vsp = new ViewSpieler(sp, "images/playerV.png");
 		ViewStatusBar vsb=new ViewStatusBar(sp,600);
 

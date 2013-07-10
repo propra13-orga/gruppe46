@@ -24,10 +24,9 @@ public class ViewKEnemy extends ViewPlayer {
 		else
 		this.setImage("images/Ludi2.png");
 
-		if (this.getPlayer().getLifes() < 1 && this.getPlayer().getEnTyp().equals("fire")) {
-			this.setImage("images/FireEnemyDead.png");
-		} else if(this.getPlayer().getLifes() < 1)
+		if (this.getPlayer().getLifes() < 1) {
 			this.setImage("images/Ludi2dead.png");
+		}
 		g.drawImage(this.getImage(), this.getPlayer().getPosX(), this
 				.getPlayer().getPosY(), null);
 		drawstatus(g);

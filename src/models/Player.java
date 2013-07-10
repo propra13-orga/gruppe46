@@ -38,9 +38,6 @@ public class Player extends Observable  {
 	private int itemcount = 0;
 	private int typedSkill;
 	private MagicBall ball;
-	private boolean ballerzeugt=false;
-	private boolean eisballerzeugt=false;
-	private boolean lasererzeugt=false;
 	private IceBall iceball;
 	private MoveableObjects movObj;
 	private int manaCost;
@@ -48,8 +45,6 @@ public class Player extends Observable  {
 	private int hohe;
 	private boolean gotRemoved;
 	private String enTyp;
-	private int score;
-	private int qFeuerball;
 	private ArrayList<Item> items = new ArrayList<Item>();
 
 	/* Every Player is initialized with its position */
@@ -66,7 +61,6 @@ public class Player extends Observable  {
 		this.setBreite(40);
 		this.setHohe(40);
 		this.gotRemoved=false;
-		
 	}
 	
 	public void setTarget(int TLayer, int TLvl)
@@ -167,9 +161,7 @@ public class Player extends Observable  {
 						&& (!(movObj.getRskills().get(i).getDestroyed()))) {
 					if(movObj.getRskills().get(i).getSkillTyp().equals("feuer"))
 					{
-					this.takeFireDamage(movObj.getRskills().get(i).getDmg());
-					
-					}
+					this.takeFireDamage(movObj.getRskills().get(i).getDmg());}
 					else if(movObj.getRskills().get(i).getSkillTyp().equals("nix"))
 					{
 						this.takedamage(movObj.getRskills().get(i).getDmg());
@@ -180,10 +172,7 @@ public class Player extends Observable  {
 					}
 					movObj.getRskills().get(i).setDestroyed(true);
 					if (this.getHealthpoints() < 1) {
-						movObj.getRskills().get(i).getOwner().setScore(10);
-						System.out.println(movObj.getRskills().get(i).getOwner().getClass().getName());
 						this.killplayer();
-						
 					}
 					
 
@@ -252,7 +241,7 @@ public class Player extends Observable  {
 	public int getLifes() {
 		return lifes;
 	}
-	
+
 	public void setArmor(int armor) {
 		this.armor = armor;
 	}
@@ -287,7 +276,6 @@ public class Player extends Observable  {
 	
 	public void takeFireDamage(int dmg)
 	{
-		
 		if(this.getFireArmor()>=dmg)
 		{
 			this.setFireArmor(this.getFireArmor()-dmg);
@@ -430,7 +418,6 @@ public class Player extends Observable  {
 		String blockType = block.getClass().getName();
 		switch (blockType) {
 		case "models.Trap":
-			
 			Sound no=new Sound();
 			no.play("sounds/no.wav");
 			this.setPos(pf.getStartX() * 60, pf.getStartY() * 60);
@@ -540,16 +527,15 @@ public class Player extends Observable  {
 	}
 
 	public void shot() {
-		
+
 		if (this.getTypedforSkill() == 1) {
 			if (this.getManaPoints() > this.getManaCost()) {
 				this.takeManaDmg();
 			
-				
+
 				ball = new MagicBall(this.getPosX(), this.getPosY(), this.pf,
 						this);
 				ball.setSkillTyp("feuer");
-				this.setqFeuerball(this.getqFeuerball()+1);
 				ball.setRange(this.getPlayersBallRange());
 				switch (direction) {
 				case 0:
@@ -764,48 +750,6 @@ public class Player extends Observable  {
 
 	public void setIceArmor(int iceArmor) {
 		this.iceArmor = iceArmor;
-	}
-
-	public boolean isBallerzeugt() {
-		return ballerzeugt;
-	}
-
-	public void setBallerzeugt(boolean ballerzeugt) {
-		this.ballerzeugt = ballerzeugt;
-	}
-
-	public boolean isEisballerzeugt() {
-		return eisballerzeugt;
-	}
-
-	public void setEisballerzeugt(boolean eisballerzeugt) {
-		this.eisballerzeugt = eisballerzeugt;
-	}
-
-	public boolean isLasererzeugt() {
-		return lasererzeugt;
-	}
-
-	public void setLasererzeugt(boolean lasererzeugt) {
-		this.lasererzeugt = lasererzeugt;
-	}
-
-	public int getScore() {
-		return score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
-	}
-
-	public int getqFeuerball() {
-		return qFeuerball;
-	}
-
-	public void setqFeuerball(int qFeuerball) {
-		
-		this.qFeuerball = qFeuerball;
-		
 	}
 
 }

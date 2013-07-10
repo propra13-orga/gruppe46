@@ -92,10 +92,6 @@ public class Game extends Observable implements Observer {
 		this.win = win;
 	}
 
-	public ControllerSpieler getControllerSpieler()
-	{
-		return cp;
-	}
 	public Spieler getSpieler() {
 		return sp;
 	}
