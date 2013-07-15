@@ -27,15 +27,15 @@ public class ViewMultiplayer extends JPanel {
 		JButton btnNewButton = new JButton("Connect");
 		btnNewButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-			Client client = new Client(textField.getText(), al,vgame);
+			Client client = new Client(textField.getText(), al, vgame);
 			}
 		});
 		btnNewButton.setBounds(86, 162, 402, 72);
 		add(btnNewButton);
 		
 		textField = new JTextField();
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		textField.setText("127.0.0.1");
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		textField.setBounds(252, 112, 236, 39);
 		add(textField);
 		textField.setColumns(10);

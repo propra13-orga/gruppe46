@@ -105,37 +105,6 @@
 <Block Type="floor" X="9" Y="7"/>
 <Block Type="floor" X="9" Y="8"/>
 <Block Type="floor" X="9" Y="9"/>
-<Block Type="shoes" X="5" Y="6"/>
-<Block Type="shoes" X="7" Y="6"/>
-<Block Type="shoes" X="7" Y="1"/>
-<Block Type="shoes" X="5" Y="6"/>
-<Block Type="shoes" X="7" Y="6"/>
-<Block Type="shoes" X="7" Y="1"/>
-<Block Type="shoes" X="5" Y="6"/>
-<Block Type="shoes" X="7" Y="6"/>
-<Block Type="shoes" X="7" Y="1"/>
-<Block Type="shoes" X="5" Y="6"/>
-<Block Type="shoes" X="7" Y="6"/>
-<Block Type="shoes" X="7" Y="1"/>
-<Block Type="shoes" X="5" Y="6"/>
-<Block Type="shoes" X="7" Y="6"/>
-<Block Type="shoes" X="7" Y="1"/>
-<Block Type="shoes" X="5" Y="6"/>
-<Block Type="shoes" X="7" Y="6"/>
-<Block Type="shoes" X="7" Y="1"/>
-<Block Type="shoes" X="5" Y="6"/>
-<Block Type="shoes" X="7" Y="6"/>
-<Block Type="shoes" X="7" Y="1"/>
-<Block Type="shoes" X="5" Y="6"/>
-<Block Type="shoes" X="7" Y="6"/>
-<Block Type="shoes" X="7" Y="1"/>
-<Block Type="shoes" X="5" Y="6"/>
-<Block Type="shoes" X="7" Y="6"/>
-<Block Type="shoes" X="7" Y="1"/>
-<Block Type="shoes" X="5" Y="6"/>
-<Block Type="shoes" X="7" Y="6"/>
-<Block Type="shoes" X="7" Y="1"/>
-<Block Type="finish" X="6" Y="4" Tlayer="2" Tlvl="1"/>
-<Block Type="finish" X="6" Y="2" Tlayer="2" Tlvl="1"/>
+
 </Layer>
 </level>

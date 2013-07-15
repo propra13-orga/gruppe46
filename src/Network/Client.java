@@ -13,6 +13,9 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Observable;
+
+import javax.swing.JOptionPane;
 
 import controller.ControllerSpieler2;
 
@@ -23,8 +26,9 @@ import views.ViewGame;
 
 import ludigame.Game;
 import models.Enemy;
+import models.Key;
 
-public class Client {
+public class Client extends Observable {
 
 	private Socket server;
 	private Thread t;
@@ -39,6 +43,8 @@ public class Client {
 	private ClientReader cr;
 	private ClientWriter cw;
 	int zu;
+	boolean enAlive;
+	boolean meAlive;
 	
 	public Client(String ip, ActionListener al, ViewGame vgame)
 	{
@@ -49,6 +55,8 @@ public class Client {
 		cw=new ClientWriter();
 		cr=new ClientReader();
 		zu=1;
+		enAlive=true;
+		meAlive=true;
 	}
 
 	public void connect(String ip)
@@ -58,8 +66,12 @@ public class Client {
 			ActionEvent event = new ActionEvent(server,0,"GAME");
 			al.actionPerformed(event);
 			game = new Game(3, vgame);
+			game.getSpieler().setLifes(0);
+			this.addObserver(game);
 			en = new Enemy (game.getPlayingField(), game.getMovableObjects());
 			en.setHealthpoints(100);
+			
+			en.setTarget(1, 1);
 			game.setvEn(en);
 			en.setPos(5, 5);
 			csp2 = new ControllerSpieler2(en);
@@ -103,10 +115,16 @@ public class Client {
 		}
 		@Override
 		public void run() {
-			while (zu==1){
+			while (meAlive==true){
 			try {
 				pressedKey=in.readLine();
-				System.out.println(pressedKey);
+				if(pressedKey.equals("lost"))
+				{
+					
+					game.getSpieler().setLifestatus(false);
+					System.out.println("Client: meAlive="+meAlive);
+					meAlive=false;
+				}
 			} catch (IOException e) {
 				try {
 					in.close();
@@ -115,7 +133,7 @@ public class Client {
 					e1.printStackTrace();
 				}
 				zu=0;
-				System.out.println("Server ist zu");
+				
 				
 				//e.printStackTrace();
 			}
@@ -124,13 +142,15 @@ public class Client {
 				csp2.keyIsPressed(pressedKey);
 			
 			try {
-				Thread.sleep(5);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
 	}
+		
+			 
 	}
 	
 	}
@@ -146,13 +166,17 @@ public class Client {
 		
 		@Override
 		public void run() {
-			while (zu==1) {
-				  
+			while (enAlive==true) {
+				  if(en.getLifestatus()==false)
+				  {
+					  enAlive=false;
+					  System.out.println("Client: enAlive auf false gesetzt");
+					  out.println("lost");
+				  }
 				
 					if (game.getSpieler().getSpeedX() !=0) {
 					out.println("x."+String.valueOf(game.getSpieler().getPosX()));
-						if (out.checkError()==true)
-						System.out.println("bin im thread");
+						
 					
 					}
 					if (game.getSpieler().getSpeedY()!=0)
@@ -177,13 +201,15 @@ public class Client {
 					}
 					
 					try {
-						Thread.sleep(5);
+						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					//this.listen();
 				}
+			
+	
 
 		}}
 		

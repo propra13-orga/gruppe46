@@ -16,6 +16,7 @@ import java.awt.event.KeyListener;
 import Sounds.Sound;
 
 import models.Enemy;
+import models.Key;
 import models.Spieler;
 
 public class ControllerSpieler2 implements  Runnable {
@@ -48,7 +49,7 @@ public class ControllerSpieler2 implements  Runnable {
 	public void keyIsPressed(String key) {
       
 		String k= key;
-		if(k.equals("feuerball")==false && k.equals("eisball")==false && k.equals("laser")==false){
+		if(k.equals("lost")==false &&k.equals("feuerball")==false && k.equals("eisball")==false && k.equals("laser")==false){
 		String xOry;
 		
 		xOry=k.replaceFirst("[.][^.]+$", "");
@@ -97,7 +98,7 @@ public class ControllerSpieler2 implements  Runnable {
 		en.shot();
 	} else if(k.equals("laser"))
 	{
-		System.out.println("lasererzeugt");
+		
 		en.setTypedforSkill(2);
 		en.shot();
 	}
@@ -136,6 +137,12 @@ public class ControllerSpieler2 implements  Runnable {
 			}
 
 		}
+		
+		 Key key = new Key(null);
+		 key.setPos(en.getPosX(), en.getPosY());
+		 key.setTarget(-2, 1);
+		 en.getPf().getItemList().add(key);
+		
 		
 
 	}

@@ -27,6 +27,7 @@ import views.ViewSpieler;
 
 import ludigame.Game;
 import models.Enemy;
+import models.Key;
 import models.MoveableObjects;
 import models.Player;
 import models.PlayingField;
@@ -46,7 +47,10 @@ public class Server {
 	BufferedReader in;
 	Thread listenThread;
     Thread writeThread;
+    Enemy en;
     int zu;
+    boolean enAlive;
+    boolean meAlive;
 	public Server(ViewGame vgame, ActionListener al) {
 		
 		this.vgame = vgame;
@@ -71,11 +75,19 @@ public class Server {
 			
 			
 			key=in.readLine();
+			if(key.equals("lost"))
+			{
+				
+				this.game.getSpieler().setLifestatus(false);
+				System.out.println("Server: meAlive="+this.meAlive);
+				this.meAlive=false;
+			}
+			
 			csp2.keyIsPressed(key);
-			System.out.println("Server:"+key);
+			
 			
 		} catch (IOException e) {
-			System.out.println("Client ist zu");
+			
 			zu=0;
 			//e.printStackTrace();
 		}
@@ -92,9 +104,10 @@ public class Server {
 			ActionEvent event = new ActionEvent(srvSock, 0, "GAME");
 			al.actionPerformed(event);
 			game = new Game(3, vgame);
-			Enemy en = new Enemy(game.getPlayingField(),
+			game.getSpieler().setLifes(0);
+			 en = new Enemy(game.getPlayingField(),
 					game.getMovableObjects());
-			//System.out.println("war hier");
+			
 			game.setvEn(en);
 			en.setPos(5, 5);
 			csp2 = new ControllerSpieler2(en);
@@ -103,6 +116,8 @@ public class Server {
 				in = new BufferedReader(new InputStreamReader(
 						clientSock.getInputStream()));
 				zu=1;
+				enAlive=true;
+				meAlive=true;
 				writeThread= new WriteThread();
 			writeThread.start();
 			
@@ -123,13 +138,13 @@ public class Server {
 
 	}
 
-	public class ListenThread extends Thread{
+	public class ListenThread extends Thread {
 	
 		
 		@Override
 		public void run()
 		{
-			while (zu==1)
+			while (meAlive==true)
 			{
 				listen();
 				try {
@@ -139,6 +154,7 @@ public class Server {
 					e.printStackTrace();
 				}
 			}
+		
 		}
 		
 	}
@@ -149,13 +165,17 @@ public class Server {
 	@Override
 		public void run() {
 
-		while (zu==1) {
+		while (enAlive==true) {
+		  if(en.getLifestatus()==false)
+		  {
+			  out.println("lost");
+			  enAlive=false;
+			  }
 		  
-		  // System.out.println("bin im thread");
 			if (game.getSpieler().getSpeedX() !=0) {
 				out.println("x."+String.valueOf(game.getSpieler().getPosX()));
-				if (out.checkError()==true)
-				System.out.println("bin im thread");
+				
+				
 			
 			}
 			if (game.getSpieler().getSpeedY()!=0)
@@ -180,13 +200,14 @@ public class Server {
 			}
 			
 			try {
-				Thread.sleep(5);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			//this.listen();
 		}
+
 
 	}
 

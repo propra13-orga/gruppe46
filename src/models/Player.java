@@ -181,7 +181,7 @@ public class Player extends Observable  {
 					movObj.getRskills().get(i).setDestroyed(true);
 					if (this.getHealthpoints() < 1) {
 						movObj.getRskills().get(i).getOwner().setScore(10);
-						System.out.println(movObj.getRskills().get(i).getOwner().getClass().getName());
+						
 						this.killplayer();
 						
 					}

@@ -69,6 +69,10 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 
 	public void btnActions(String cmd) {
 		switch (cmd) {
+		case "Client":
+			
+			
+			break;
 		case "1":
 			p1.setSize(610,640);
 			cardLayout.show(p1, "GAME");
@@ -131,6 +135,12 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
+		checkifwin();
+
+	}
+	
+	public void checkifwin()
+	{
 		if (game.win() == false) {
 			cardLayout.show(p1, "MAIN");
 			ImageIcon icon = new ImageIcon("images/playerHappy.png");
@@ -155,7 +165,6 @@ public class MainWindow extends JFrame implements ActionListener, Observer {
 			game=null;
 
 		}
-
 	}
 
 }

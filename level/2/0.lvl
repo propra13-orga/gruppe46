@@ -114,5 +114,6 @@
 <Block Type="enemy" X="0" Y="4"/>
 <Block Type="iceenemy" X="5" Y="9"/>
 <Block Type="fireenemy" X="4" Y="6"/>
+<Block Type="shop" X="0" Y="2"/>
 </Layer>
 </level>

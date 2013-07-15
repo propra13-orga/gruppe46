@@ -4,7 +4,8 @@
 <author>Gerhard Klassen</author>
 <lvlname>close your eyes</lvlname>
 <Layer>
-<layerdetail Height="600" Width="600" StartX="0" StartY="8"/>
+<layerdetail Height="600" Width="600" StartX="0" StartY="0"/>
+<Block Type="finish" X="8" Y="5" Tlayer="2" Tlvl="2"/>
 <Block Type="floor" X="0" Y="0"/>
 <Block Type="floor" X="0" Y="1"/>
 <Block Type="floor" X="0" Y="2"/>
@@ -105,13 +106,11 @@
 <Block Type="floor" X="9" Y="7"/>
 <Block Type="floor" X="9" Y="8"/>
 <Block Type="floor" X="9" Y="9"/>
-<Block Type="finish" X="8" Y="5" Tlayer="2" Tlvl="1"/>
+
 <Block Type="enemy" X="0" Y="0"/>
-<Block Type="iceenemy" X="3" Y="3"/>
-<Block Type="fireenemy" X="3" Y="6"/>
-<Block Type="iceenemy" X="3" Y="5"/>
-<Block Type="healthpack" X="0" Y="0"/>
-<Block Type="manacosts" X="9" Y="3"/>
+<Block Type="enemy" X="3" Y="3"/>
+<Block Type="enemy" X="3" Y="6"/>
+<Block Type="enemy" X="3" Y="5"/>
 <Block Type="enemy" X="9" Y="0"/>
 </Layer>
 </level>

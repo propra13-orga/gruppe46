@@ -38,7 +38,7 @@ public class Spieler extends Player {
 	}
 
 	public void reactShop() {
-		pf.LoadLayer(-1,1);
+		pf.LoadLayer(-1, pf.getLevel());
 		this.setPos(pf.getStartX() * 60 , pf.getStartY() * 60 );
 		movObj.getRskills().clear();
 	}

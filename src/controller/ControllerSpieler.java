@@ -17,6 +17,8 @@ import Sounds.Sound;
 
 import models.Spieler;
 
+
+
 public class ControllerSpieler implements KeyListener, Runnable {
 
 	private Spieler sp;
@@ -25,10 +27,12 @@ public class ControllerSpieler implements KeyListener, Runnable {
 	private int sX = 0;
 	private int sY = 0;
 	private int counter = 0;
-
+	
 	public ControllerSpieler(Spieler sp) {
 		this.sp = sp;
 		controllerThread = new Thread(this);
+		 
+		
 	}
 
 	public void start() {
@@ -127,6 +131,7 @@ public class ControllerSpieler implements KeyListener, Runnable {
 	@Override
 	public void run() {
 		while (sp.getLifestatus()==true) {
+			
 			sp.getDamage();
 			try {
 				Thread.sleep(sp.getSpeed());

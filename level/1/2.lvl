@@ -38,7 +38,7 @@
 <Block Type="floor" X="2" Y="9"/>
 <Block Type="floor" X="3" Y="0"/>
 <Block Type="trap" X="3" Y="1"/>
-<Block Type="shop" X="3" Y="2"/>
+
 <Block Type="trap" X="3" Y="3"/>
 <Block Type="floor" X="3" Y="4"/>
 <Block Type="floor" X="3" Y="5"/>

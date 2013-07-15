@@ -198,6 +198,17 @@ public class lvlEditor extends JPanel implements MouseListener {
 		button_5.setBounds(90, 313, 60, 60);
 		tools.add(button_5);
 		
+		JButton button_6 = new JButton("");
+		button_6.setIcon(new ImageIcon(lvlEditor.class.getResource("/view/images/itemdelete.png")));
+		button_6.setSelectedIcon(new ImageIcon(lvlEditor.class.getResource("/view/images/itemdelete.png")));
+		button_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				current="itemdelete";
+			}
+		});
+		button_6.setBounds(90, 67, 60, 60);
+		tools.add(button_6);
+		
 		Panel panel = new Panel();
 		panel.setBounds(10, 53, 160, 212);
 		add(panel);
@@ -425,6 +436,9 @@ public class lvlEditor extends JPanel implements MouseListener {
 			case "floor":
 				currentImage = ImageIO.read(new File("images/boden.png"));
 				break;
+			case "itemdelete":
+				currentImage = ImageIO.read(new File("images/boden.png"));
+				break;
 			case "wall":
 				currentImage = ImageIO.read(new File("images/Wand1.png"));
 				break;
@@ -497,6 +511,21 @@ public class lvlEditor extends JPanel implements MouseListener {
 			case "shop":
 				Fieldarray[posX/60][posY/60]=new Shop(posX/60, posY/60);
 				break;	
+			case "itemdelete":
+				for (int i=0; i<itemList.size(); i++)
+				{
+					
+					
+					if ( ((itemList.get(i).getPosX()<=(posX))&&((itemList.get(i).getPosX()+60)>=(posX) ))
+							&&((itemList.get(i).getPosY()<=(posY))&&((itemList.get(i).getPosY()+60)>=(posY) )))
+					{
+						System.out.println(itemList.get(i).getPosX()+" und "+itemList.get(i).getPosY() );
+						itemList.remove(i);
+						
+					}
+				}
+				break;
+
 			}
 		}
 	}
